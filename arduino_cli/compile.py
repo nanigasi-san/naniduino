@@ -7,7 +7,7 @@ def run_and_get_stdout(cmd):
     return run(cmd, capture_output=True).stdout.decode("utf-8")
 
 
-def compile(ino_path, fqbn=None, *, build_cache_path="", build_path="",
+def compile(*, ino_path, fqbn=None, build_cache_path="", build_path="",
             build_properties="", output="", preprocess=False, quiet=False,
             show_properties=False, verbose=False, vid_pid="", warnings="none"):
     """
