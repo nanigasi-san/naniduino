@@ -7,7 +7,7 @@ def run_and_get_stdout(cmd):
     return run(cmd, capture_output=True).stdout.decode("utf-8")
 
 
-def compile(*, ino_path, fqbn=None, build_cache_path="", build_path="",
+def compile(*, ino_path, FQBN=None, build_cache_path="", build_path="",
             build_properties="", output="", preprocess=False, quiet=False,
             show_properties=False, verbose=False, vid_pid="", warnings="none"):
     """
@@ -17,7 +17,7 @@ def compile(*, ino_path, fqbn=None, build_cache_path="", build_path="",
     ----------
     ino_path : str
         コンパイルしたいスケッチのパス。ファイル名またはフォルダ名(フォルダ名の場合同名.inoのファイル)
-    fqbn : str
+    FQBN : str
         ボードの種類。指定しない場合はsketch.jsonを読む。
     build_cache_path : str
         ビルドのキャッシュを保存するパス
@@ -40,10 +40,10 @@ def compile(*, ino_path, fqbn=None, build_cache_path="", build_path="",
     warnings : str
         gccに警告レベルを伝える。`none`,`default`,`more`,`all`
     """
-    if not (fqbn or os.path.exists("sketch.json")):
-        raise TypeError("please set `fqbn` or use `board.attach()`!")
+    if not (FQBN or os.path.exists("sketch.json")):
+        raise TypeError("please set `FQBN` or use `board.attach()`!")
 
-    fqbn_cmd = "--fqbn {0} ".format(fqbn if fqbn
+    fqbn_cmd = "--fqbn {0} ".format(FQBN if FQBN
                                     else loads(open("sketch.json").read())
                                     ["cpu"]["fqbn"])
 
