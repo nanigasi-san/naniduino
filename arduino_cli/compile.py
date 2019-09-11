@@ -70,5 +70,4 @@ def compile(*, ino_path, FQBN=None, build_cache_path="", build_path="",
     cmd = "arduino-cli compile {0}{1} {2}".format(
         fqbn_cmd, ino_path, compile_options
     )
-    print(cmd)
     return run_and_get_stdout(cmd)
