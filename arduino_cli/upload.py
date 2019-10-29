@@ -29,5 +29,5 @@ def upload(*, FQBN, PORT, source_path, verbose=False, verify=False):
     upload_options = [option for option in upload_options if option]
     cmd = "arduino-cli upload -b {0} -p {1} -i {2} {3}".format(
         FQBN, PORT, source_path, " ".join(upload_options)
-        )
+    )
     return run_and_get_stdout(cmd)
